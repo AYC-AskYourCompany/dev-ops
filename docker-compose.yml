@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  keycloak-ayc:
+    image: jboss/keycloak:latest
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
+    container_name: "keycloak-ayc"
+    ports:
+      - 8007:8080
+    volumes:
+      - keycloak-ayc:/opt/jboss/keycloak/standalone/data
+  
+  nexus:
+    image: sonatype/nexus3:latest
+    ports:
+      - 8081:8081
+      - 8123:8123
+    volumes:
+      - nexus-ayc:/nexus-data
+
+volumes:
+  keycloak-ayc:
+  nexus-ayc:
+
+
