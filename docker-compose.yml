@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.0'
 
 services:
   keycloak-ayc:
@@ -19,9 +19,17 @@ services:
       - 8123:8123
     volumes:
       - nexus-ayc:/nexus-data
+      
+  mongodb-ayc:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb-ayc:/data/db
 
 volumes:
   keycloak-ayc:
   nexus-ayc:
+  mongodb-ayc:
 
 
